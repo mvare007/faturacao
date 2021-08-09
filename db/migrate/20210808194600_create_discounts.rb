@@ -4,7 +4,10 @@ class CreateDiscounts < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :description
       t.decimal :percentage
-      t.date :expiry_date
+      t.date :start_date
+      t.date :end_date
+      t.string :status
+      t.references :store, null: false, foreign_key: true
 
       t.timestamps
     end

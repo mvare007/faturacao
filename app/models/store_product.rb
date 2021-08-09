@@ -27,7 +27,7 @@ class StoreProduct < ApplicationRecord
   belongs_to :product
 
   # Delegates
-  delegate :name, to: :store, prefix: true, allow_nil: true
+  delegate :name, :description, to: :store, prefix: true, allow_nil: true
   delegate :name, :product_status, to: :product, allow_nil: true
 
   # Callbacks
