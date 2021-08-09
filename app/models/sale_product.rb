@@ -31,7 +31,7 @@ class SaleProduct < ApplicationRecord
 
   # Delegates
   with_options prefix: true, allow_nil: true do
-    delegate :name, :unit_price, :code, to: :product
+    delegate :name, :unit_price, :code, :description, to: :product
     delegate :name, :percentage, to: :discount
   end
 

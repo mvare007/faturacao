@@ -44,6 +44,7 @@ class Product < ApplicationRecord
   # Validations
   validates :unit_price, presence: true
   validates :code, :name, presence: true, length: { maximum: 120 }
+  validates :description, length: { maximum: 400 }
 
   # Instance Methods
 end
