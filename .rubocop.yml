@@ -42,3 +42,7 @@ Style/EmptyMethod:
   Enabled: false
 Bundler/OrderedGems:
   Enabled: false
+Metrics/MethodLength:
+  Max: 1000
+Metrics/BlockLength:
+  Max: 1000
