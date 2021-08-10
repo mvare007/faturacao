@@ -22,6 +22,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class StoreUser < ApplicationRecord
+  audited
+
   # Associations
   belongs_to :user
   belongs_to :store

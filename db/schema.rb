@@ -10,19 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_195727) do
+ActiveRecord::Schema.define(version: 2021_08_10_145634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "audits", force: :cascade do |t|
+    t.integer "auditable_id"
+    t.string "auditable_type"
+    t.integer "associated_id"
+    t.string "associated_type"
+    t.integer "user_id"
+    t.string "user_type"
+    t.string "username"
+    t.string "action"
+    t.text "audited_changes"
+    t.integer "version", default: 0
+    t.string "comment"
+    t.string "remote_address"
+    t.string "request_uuid"
+    t.datetime "created_at"
+    t.index ["associated_type", "associated_id"], name: "associated_index"
+    t.index ["auditable_type", "auditable_id", "version"], name: "auditable_index"
+    t.index ["created_at"], name: "index_audits_on_created_at"
+    t.index ["request_uuid"], name: "index_audits_on_request_uuid"
+    t.index ["user_id", "user_type"], name: "user_index"
+  end
 
   create_table "discounts", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.decimal "percentage"
-    t.date "expiry_date"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "status"
+    t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_discounts_on_name", unique: true
+    t.index ["store_id"], name: "index_discounts_on_store_id"
   end
 
   create_table "invoice_products", force: :cascade do |t|
@@ -49,10 +75,10 @@ ActiveRecord::Schema.define(version: 2021_08_08_195727) do
 
   create_table "product_categories", force: :cascade do |t|
     t.string "name"
-    t.string "key"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_product_categories_on_name", unique: true
   end
 
   create_table "product_statuses", force: :cascade do |t|
@@ -60,17 +86,21 @@ ActiveRecord::Schema.define(version: 2021_08_08_195727) do
     t.string "key"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_product_statuses_on_name", unique: true
   end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "unit_price"
     t.string "code"
+    t.text "description"
     t.bigint "product_status_id", null: false
     t.bigint "product_category_id"
     t.bigint "tax_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["code"], name: "index_products_on_code", unique: true
+    t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
     t.index ["product_status_id"], name: "index_products_on_product_status_id"
     t.index ["tax_id"], name: "index_products_on_tax_id"
@@ -153,6 +183,7 @@ ActiveRecord::Schema.define(version: 2021_08_08_195727) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "discounts", "stores"
   add_foreign_key "invoice_products", "invoices"
   add_foreign_key "invoice_products", "sale_products"
   add_foreign_key "invoices", "sales"

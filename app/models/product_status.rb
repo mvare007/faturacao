@@ -8,6 +8,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_product_statuses_on_name  (name) UNIQUE
+#
 class ProductStatus < ApplicationRecord
   # Associations
   has_many :products, dependent: :restrict_with_error

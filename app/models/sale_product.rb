@@ -23,6 +23,8 @@
 #  fk_rails_...  (sale_id => sales.id)
 #
 class SaleProduct < ApplicationRecord
+  audited
+
   # Associations
   belongs_to :sale
   belongs_to :product
@@ -34,6 +36,9 @@ class SaleProduct < ApplicationRecord
     delegate :name, :unit_price, :code, :description, to: :product
     delegate :name, :percentage, to: :discount
   end
+
+  # Scopes
+  scope :for_sale, ->(sale) { where(sale: sale) }
 
   # Callbacks
 

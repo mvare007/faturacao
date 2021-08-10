@@ -4,6 +4,7 @@
 #
 #  id                  :bigint           not null, primary key
 #  code                :string
+#  description         :text
 #  name                :string
 #  unit_price          :decimal(, )
 #  created_at          :datetime         not null
@@ -14,6 +15,8 @@
 #
 # Indexes
 #
+#  index_products_on_code                 (code) UNIQUE
+#  index_products_on_name                 (name) UNIQUE
 #  index_products_on_product_category_id  (product_category_id)
 #  index_products_on_product_status_id    (product_status_id)
 #  index_products_on_tax_id               (tax_id)

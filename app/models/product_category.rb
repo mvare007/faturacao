@@ -4,10 +4,13 @@
 #
 #  id          :bigint           not null, primary key
 #  description :text
-#  key         :string
 #  name        :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#
+# Indexes
+#
+#  index_product_categories_on_name  (name) UNIQUE
 #
 class ProductCategory < ApplicationRecord
   # Associations
@@ -17,8 +20,10 @@ class ProductCategory < ApplicationRecord
 
   # Callbacks
 
+  # Scopes
+
   # Validations
-  validates :key, :name, presence: true, length: { maximum: 120 }
+  validates :name, presence: true, length: { maximum: 120 }, uniqueness: true
   validates :description, length: { maximum: 400 }
 
   # Instance Methods

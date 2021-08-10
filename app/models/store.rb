@@ -14,6 +14,8 @@
 #  updated_at     :datetime         not null
 #
 class Store < ApplicationRecord
+  audited
+
   # Associations
   has_many :store_users, dependent: :destroy
   has_many :store_products, dependent: :destroy

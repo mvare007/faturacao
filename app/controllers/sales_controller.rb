@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-  before_create :set_sale, only: %i[show edit update destroy]
+  before_action :set_sale, only: %i[show edit update destroy]
 
   def index
     @sales = Sale.all
@@ -46,13 +46,18 @@ class SalesController < ApplicationController
   end
 
   def sale_params
-    params.require(:sale)
-          .permit(
-            :total,
-            :total_tax,
-            :store_id,
-            :store_user_id,
-            sale_products_attributes: %i[quantity discount_id product_id sale_id _destroy]
-          )
+    params.require(:sale).permit(permitted_params, sale_product_params)
+  end
+
+  def permitted_params
+    %i[
+      total
+      store_id
+      store_user_id
+    ]
+  end
+
+  def sale_product_params
+    { sale_products_attributes: %i[quantity discount_id product_id sale_id _destroy] }
   end
 end

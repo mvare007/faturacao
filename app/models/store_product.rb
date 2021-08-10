@@ -22,6 +22,8 @@
 #  fk_rails_...  (store_id => stores.id)
 #
 class StoreProduct < ApplicationRecord
+  audited
+
   # Associations
   belongs_to :store
   belongs_to :product
@@ -29,6 +31,9 @@ class StoreProduct < ApplicationRecord
   # Delegates
   delegate :name, :description, to: :store, prefix: true, allow_nil: true
   delegate :name, :product_status, to: :product, allow_nil: true
+
+  # Scopes
+  scope :for_store, ->(store) { where(store: store) }
 
   # Callbacks
 

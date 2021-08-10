@@ -4,10 +4,13 @@
 #
 #  id          :bigint           not null, primary key
 #  description :text
-#  key         :string
 #  name        :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#
+# Indexes
+#
+#  index_product_categories_on_name  (name) UNIQUE
 #
 FactoryBot.define do
   factory :product_category do

@@ -21,6 +21,8 @@
 #  fk_rails_...  (store_user_id => store_users.id)
 #
 class Sale < ApplicationRecord
+  audited
+
   # Associations
   belongs_to :store
   belongs_to :store_user
@@ -37,7 +39,7 @@ class Sale < ApplicationRecord
   # Callbacks
 
   # Validations
-  validate :total, :total_tax, presence: true
+  validates :total, :total_tax, presence: true
 
   # Instance Methods
 end

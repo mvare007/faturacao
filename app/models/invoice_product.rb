@@ -26,6 +26,9 @@ class InvoiceProduct < ApplicationRecord
   # Delegates
   delegate :product, to: :sale_product, allow_nil: true
 
+  # Scopes
+  scope :for_invoice, ->(invoice) { where(invoice: invoice) }
+
   # Callbacks
 
   # Validations
