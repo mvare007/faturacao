@@ -24,7 +24,9 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import tabler from "@tabler/core";
+import "../../../vendor/tabler/assets/css/tabler.css";
+import "../../../vendor/tabler/assets/css/tabler-vendors.css";
+import "../../../vendor/tabler/assets/js/tabler.js";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
