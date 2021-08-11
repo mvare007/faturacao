@@ -2,17 +2,21 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
 
   def index
+    authorize Product
     @products = Product.all
   end
 
   def show
+    authorize @product
   end
 
   def new
+    authorize @product
     @product = Product.new
   end
 
   def create
+    authorize @product
     @product = Product.new(product_params)
     if @product.save
       redirect_to @product, notice: t(:created)
@@ -22,9 +26,11 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    authorize @product
   end
 
   def update
+    authorize @product
     if @product.update(product_params)
       redirect_to @product, notice: t(:updated)
     else
@@ -33,6 +39,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    authorize @product
     @product.destroy
     redirect_to products_path, notice: t(:destroyed)
   end

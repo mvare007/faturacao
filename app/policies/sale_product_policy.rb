@@ -1,0 +1,2 @@
+class SaleProductPolicy < ApplicationPolicy
+end

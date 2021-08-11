@@ -1,4 +1,8 @@
 en:
-  created: Criado com Sucesso
+  pundit:
+    default: 'Não tem permissão para realizar a acção!'
+    update?: 'Não tem permissão para editar %{model_name_pluralized}'
+    create?: 'Não tem permissão para criar %{model_name_pluralized}!'
+    created: Criado com Sucesso
   updated: Atualizado com Sucesso
   destroyed: Eliminado com Sucesso

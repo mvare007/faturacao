@@ -1,0 +1,2 @@
+class StoreUserPolicy < ApplicationPolicy
+end

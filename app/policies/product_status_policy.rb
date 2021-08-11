@@ -1,0 +1,2 @@
+class ProductStatusPolicy < ApplicationPolicy
+end

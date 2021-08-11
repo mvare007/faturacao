@@ -2,17 +2,21 @@ class DiscountsController < ApplicationController
   before_action :set_discount, only: %i[show edit update destroy]
 
   def index
+    authorize Discount
     @discounts = Discount.all
   end
 
   def show
+    authorize @discount
   end
 
   def new
+    authorize @discount
     @discount = Discount.new
   end
 
   def create
+    authorize @discount
     @discount = Discount.new(discount_params)
     if @discount.save
       redirect_to @discount, notice: t(:created)
@@ -22,9 +26,11 @@ class DiscountsController < ApplicationController
   end
 
   def edit
+    authorize @discount
   end
 
   def update
+    authorize @discount
     if @discount.update(discount_params)
       redirect_to @discount, notice: t(:updated)
     else
@@ -33,6 +39,7 @@ class DiscountsController < ApplicationController
   end
 
   def destroy
+    authorize @discount
     @discount.destroy
     redirect_to discounts_path, notice: t(:destroyed)
   end

@@ -2,18 +2,22 @@ class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[show destroy]
 
   def index
+    authorize Invoice
     @invoices = Invoice.all
   end
 
   def show
+    authorize @invoice
   end
 
   def new
+    authorize @invoice
     @invoice = Invoice.new
     @invoice.invoice_products.build
   end
 
   def create
+    authorize @invoice
     @invoice = Invoice.new(invoice_params)
     if @invoice.save
       redirect_to @invoice, notice: t(:created)
@@ -23,6 +27,7 @@ class InvoicesController < ApplicationController
   end
 
   def destroy
+    authorize @invoice
     @invoice.destroy
     redirect_to invoices_path, notice: t(:destroyed)
   end

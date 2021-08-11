@@ -1,0 +1,2 @@
+class TaxPolicy < ApplicationPolicy
+end

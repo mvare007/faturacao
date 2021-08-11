@@ -28,14 +28,17 @@ class StoreUser < ApplicationRecord
   belongs_to :user
   belongs_to :store
 
-  # Constants
-  STATUSES = { active: 'active', inactive: 'inactive' }.freeze
-
   # Delegates
   with_options prefix: true, allow_nil: true do
     delegate :full_name, :admin, :status, to: :user
     delegate :name, to: :store
   end
+
+  # Constants
+  STATUSES = { active: 'active', inactive: 'inactive' }.freeze
+
+  # Scopes
+  scope :for_store, ->(store) { where(store: store) }
 
   # Callbacks
   after_initialize :init, if: :new_record?
@@ -48,13 +51,13 @@ class StoreUser < ApplicationRecord
     "#{user_full_name} - #{store_name}"
   end
 
-  def inactive!
-    self.status = STATUSES.fetch(:inactive)
-  end
+  # def inactive!
+  #   self.status = STATUSES.fetch(:inactive)
+  # end
 
-  def active!
-    self.status = STATUSES.fetch(:active)
-  end
+  # def active!
+  #   self.status = STATUSES.fetch(:active)
+  # end
 
   private
 
