@@ -1,0 +1,12 @@
+pt:
+  activerecord:
+    models:
+      product:
+        one: Produto
+        other: Produtos
+    attributes:
+      product:
+        code: Código
+        description: Descrição
+        name: Nome
+        unit_price: Preço Unitário

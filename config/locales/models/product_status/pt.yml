@@ -1,0 +1,10 @@
+pt:
+  activerecord:
+    models:
+      product_status:
+        one: Estado de Produto
+        other: Estados de Produto
+    attributes:
+      product_status:
+        name: Nome
+        description: Descrição

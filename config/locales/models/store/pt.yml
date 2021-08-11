@@ -1,0 +1,15 @@
+pt:
+  activerecord:
+    models:
+      store:
+        one: Loja
+        other: Lojas
+    attributes:
+      store:
+        status: Estado
+        name: Nome
+        nif: NIF
+        license_number: Alvará Nº
+        address: Morada
+        zip_code: Código Postal
+        location: Localidade

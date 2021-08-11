@@ -1,0 +1,13 @@
+pt:
+  activerecord:
+    models:
+      user:
+        one: Utilizador
+        other: Utilizadores
+    attributes:
+      user:
+        admin: Administrador?
+        email: E-mail
+        first_name: Nome
+        last_name: Apelido
+        status: Estado

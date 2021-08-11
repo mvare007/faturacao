@@ -1,0 +1,10 @@
+pt:
+  activerecord:
+    models:
+      tax:
+        one: Imposto Iva
+        other: Impostos Iva
+    attributes:
+      tax:
+        name: Nome
+        percentage: Percentagem

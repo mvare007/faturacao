@@ -1,0 +1,10 @@
+pt:
+  activerecord:
+    models:
+      operation:
+        one: Operação
+        other: Operações
+    attributes:
+      operation:
+        name: Nome
+        description: Descrição

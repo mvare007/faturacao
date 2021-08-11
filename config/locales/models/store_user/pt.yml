@@ -1,0 +1,11 @@
+pt:
+  activerecord:
+    models:
+      store_user:
+        one: Colaborador da Loja
+        other: Colaboradores da Loja
+    attributes:
+      store_user:
+        status: Estado
+        store_admin: Responsável de Loja?
+        store_supervisor: Supervisor de Loja?
