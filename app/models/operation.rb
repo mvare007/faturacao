@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sales
+# Table name: operations
 #
 #  id            :bigint           not null, primary key
 #  total         :decimal(, )
@@ -12,21 +12,21 @@
 #
 # Indexes
 #
-#  index_sales_on_store_id       (store_id)
-#  index_sales_on_store_user_id  (store_user_id)
+#  index_operations_on_store_id       (store_id)
+#  index_operations_on_store_user_id  (store_user_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (store_id => stores.id)
 #  fk_rails_...  (store_user_id => store_users.id)
 #
-class Sale < ApplicationRecord
+class Operation < ApplicationRecord
   audited
 
   # Associations
   belongs_to :store
   belongs_to :store_user
-  has_many :sale_products, dependent: :destroy
+  has_many :operation_products, dependent: :destroy
   has_many :invoices, dependent: :restrict_with_error
 
   # Delegates
@@ -34,7 +34,7 @@ class Sale < ApplicationRecord
   delegate :user, to: :store_user, allow_nil: true
 
   # Nested Attributes
-  accepts_nested_attributes_for :sale_products, allow_destroy: true
+  accepts_nested_attributes_for :operation_products, allow_destroy: true
 
   # Callbacks
 

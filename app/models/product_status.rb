@@ -17,15 +17,16 @@ class ProductStatus < ApplicationRecord
   has_many :products, dependent: :restrict_with_error
 
   # Constants
-  STATUSES = {
-    in_stock: 'in_stock',
-    out_of_stock: 'out_of_stock',
-    unavailable: 'unavailable',
-    discontinued: 'discontinued'
-  }.freeze
+  # STATUSES = {
+  #   in_stock: 'in_stock',
+  #   out_of_stock: 'out_of_stock',
+  #   unavailable: 'unavailable',
+  #   discontinued: 'discontinued'
+  # }.freeze
 
   # Delegates
-  validates :key, :name, presence: true, length: { maximum: 120 }
+  validates :name, presence: true, length: { maximum: 120 }, uniqueness: true
+  validates :description, presence: true, length: { maximum: 120 }
 
   # Callbacks
 

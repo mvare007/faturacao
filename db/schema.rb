@@ -53,22 +53,22 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
 
   create_table "invoice_products", force: :cascade do |t|
     t.bigint "invoice_id", null: false
-    t.bigint "sale_product_id", null: false
+    t.bigint "operation_product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["invoice_id"], name: "index_invoice_products_on_invoice_id"
-    t.index ["sale_product_id"], name: "index_invoice_products_on_sale_product_id"
+    t.index ["operation_product_id"], name: "index_invoice_products_on_operation_product_id"
   end
 
   create_table "invoices", force: :cascade do |t|
     t.string "customer_nif"
     t.string "customer_name"
-    t.bigint "sale_id", null: false
+    t.bigint "operation_id", null: false
     t.bigint "store_id", null: false
     t.bigint "store_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["sale_id"], name: "index_invoices_on_sale_id"
+    t.index ["operation_id"], name: "index_invoices_on_operation_id"
     t.index ["store_id"], name: "index_invoices_on_store_id"
     t.index ["store_user_id"], name: "index_invoices_on_store_user_id"
   end
@@ -106,27 +106,27 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
     t.index ["tax_id"], name: "index_products_on_tax_id"
   end
 
-  create_table "sale_products", force: :cascade do |t|
-    t.bigint "sale_id", null: false
+  create_table "operation_products", force: :cascade do |t|
+    t.bigint "operation_id", null: false
     t.bigint "product_id", null: false
     t.bigint "discount_id"
     t.decimal "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["discount_id"], name: "index_sale_products_on_discount_id"
-    t.index ["product_id"], name: "index_sale_products_on_product_id"
-    t.index ["sale_id"], name: "index_sale_products_on_sale_id"
+    t.index ["discount_id"], name: "index_operation_products_on_discount_id"
+    t.index ["product_id"], name: "index_operation_products_on_product_id"
+    t.index ["operation_id"], name: "index_operation_products_on_operation_id"
   end
 
-  create_table "sales", force: :cascade do |t|
+  create_table "operations", force: :cascade do |t|
     t.decimal "total"
     t.decimal "total_tax"
     t.bigint "store_id", null: false
     t.bigint "store_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["store_id"], name: "index_sales_on_store_id"
-    t.index ["store_user_id"], name: "index_sales_on_store_user_id"
+    t.index ["store_id"], name: "index_operations_on_store_id"
+    t.index ["store_user_id"], name: "index_operations_on_store_user_id"
   end
 
   create_table "store_products", force: :cascade do |t|
@@ -185,18 +185,18 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
 
   add_foreign_key "discounts", "stores"
   add_foreign_key "invoice_products", "invoices"
-  add_foreign_key "invoice_products", "sale_products"
-  add_foreign_key "invoices", "sales"
+  add_foreign_key "invoice_products", "operation_products"
+  add_foreign_key "invoices", "operations"
   add_foreign_key "invoices", "store_users"
   add_foreign_key "invoices", "stores"
   add_foreign_key "products", "product_categories"
   add_foreign_key "products", "product_statuses"
   add_foreign_key "products", "taxes"
-  add_foreign_key "sale_products", "discounts"
-  add_foreign_key "sale_products", "products"
-  add_foreign_key "sale_products", "sales"
-  add_foreign_key "sales", "store_users"
-  add_foreign_key "sales", "stores"
+  add_foreign_key "operation_products", "discounts"
+  add_foreign_key "operation_products", "products"
+  add_foreign_key "operation_products", "operations"
+  add_foreign_key "operations", "store_users"
+  add_foreign_key "operations", "stores"
   add_foreign_key "store_products", "products"
   add_foreign_key "store_products", "stores"
   add_foreign_key "store_users", "stores"

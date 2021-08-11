@@ -20,7 +20,7 @@ class Store < ApplicationRecord
   has_many :store_users, dependent: :destroy
   has_many :store_products, dependent: :destroy
   has_many :discounts, dependent: :destroy
-  has_many :sales, dependent: :restrict_with_error
+  has_many :operations, dependent: :restrict_with_error
   has_many :invoices, dependent: :restrict_with_error
 
   # Constants

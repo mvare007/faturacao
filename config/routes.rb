@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     resources :store_users
   end
 
-  resources :sales do
-    resources :sale_products
+  resources :operations do
+    resources :operation_products
   end
 
   resources :invoices, except: %i[edit update] do

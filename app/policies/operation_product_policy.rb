@@ -1,0 +1,2 @@
+class OperationProductPolicy < ApplicationPolicy
+end

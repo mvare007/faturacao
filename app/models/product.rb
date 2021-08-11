@@ -34,7 +34,7 @@ class Product < ApplicationRecord
   belongs_to :product_status
   belongs_to :product_category, optional: true
   belongs_to :tax
-  has_many :sale_products, dependent: :destroy
+  has_many :operation_products, dependent: :destroy
   has_many :store_products, dependent: :destroy
 
   # Delegates

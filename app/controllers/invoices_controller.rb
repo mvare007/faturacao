@@ -46,13 +46,13 @@ class InvoicesController < ApplicationController
     %i[
       customer_name
       customer_nif
-      sale_id
+      operation_id
       store_id
       store_user_id
     ]
   end
 
   def invoice_products_params
-    { invoice_products_attributes: %i[sale_product_id invoice_id _destroy] }
+    { invoice_products_attributes: %i[operation_product_id invoice_id _destroy] }
   end
 end

@@ -1,7 +1,7 @@
-class CreateSaleProducts < ActiveRecord::Migration[6.1]
+class CreateOperationProducts < ActiveRecord::Migration[6.1]
   def change
-    create_table :sale_products do |t|
-      t.references :sale, null: false, foreign_key: true
+    create_table :operation_products do |t|
+      t.references :operation, null: false, foreign_key: true
       t.references :product, null: false, foreign_key: true
       t.references :discount, foreign_key: true
       t.decimal :quantity

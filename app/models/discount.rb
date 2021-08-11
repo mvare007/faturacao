@@ -27,7 +27,7 @@ class Discount < ApplicationRecord
 
   # Associations
   belongs_to :store
-  has_many :sales_products, dependent: :nullify
+  has_many :operations_products, dependent: :nullify
 
   # Constants
   STATUSES = { active: 'active', inactive: 'inactive' }.freeze

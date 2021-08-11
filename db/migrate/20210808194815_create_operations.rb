@@ -1,6 +1,6 @@
-class CreateSales < ActiveRecord::Migration[6.1]
+class CreateOperations < ActiveRecord::Migration[6.1]
   def change
-    create_table :sales do |t|
+    create_table :operations do |t|
       t.decimal :total
       t.decimal :total_tax
       t.references :store, null: false, foreign_key: true
