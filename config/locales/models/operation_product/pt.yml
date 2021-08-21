@@ -1,0 +1,9 @@
+pt:
+  activerecord:
+    models:
+      operation_product:
+        one: Produto da Operação
+        other: Produtos da Operação
+    attributes:
+      operation_product:
+        quantity: Quantidade

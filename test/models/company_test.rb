@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: stores
+# Table name: companies
 #
 #  id             :bigint           not null, primary key
 #  address        :string
@@ -13,13 +13,10 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-FactoryBot.define do
-  factory :store do
-    name { "MyString" }
-    nif { "MyString" }
-    address { "MyString" }
-    zip_code { "MyString" }
-    location { "MyString" }
-    license_number { "MyString" }
-  end
+require "test_helper"
+
+class CompanyTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end

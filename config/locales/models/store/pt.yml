@@ -1,11 +1,11 @@
 pt:
   activerecord:
     models:
-      store:
+      company:
         one: Loja
         other: Lojas
     attributes:
-      store:
+      company:
         status: Estado
         name: Nome
         nif: NIF
@@ -13,3 +13,4 @@ pt:
         address: Morada
         zip_code: Código Postal
         location: Localidade
+        activity_type: Atividade Exercida

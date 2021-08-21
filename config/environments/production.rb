@@ -37,7 +37,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
+  # Company uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
   # Mount Action Cable outside main process or domain.
@@ -55,8 +55,8 @@ Rails.application.configure do
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 
-  # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  # Use a different cache company in production.
+  # config.cache_company = :mem_cache_company
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
@@ -110,7 +110,7 @@ Rails.application.configure do
   # class timestamps to determine how long to wait before reading from the
   # replica.
   #
-  # By default Rails will store a last write timestamp in the session. The
+  # By default Rails will company a last write timestamp in the session. The
   # DatabaseSelector middleware is designed as such you can define your own
   # strategy for connection switching and pass that into the middleware through
   # these configuration options.

@@ -35,7 +35,7 @@ class Product < ApplicationRecord
   belongs_to :product_category, optional: true
   belongs_to :tax
   has_many :operation_products, dependent: :destroy
-  has_many :store_products, dependent: :destroy
+  has_many :company_products, dependent: :destroy
 
   # Delegates
   with_options prefix: true, allow_nil: true do

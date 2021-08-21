@@ -44,11 +44,11 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
     t.date "start_date"
     t.date "end_date"
     t.string "status"
-    t.bigint "store_id", null: false
+    t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_discounts_on_name", unique: true
-    t.index ["store_id"], name: "index_discounts_on_store_id"
+    t.index ["company_id"], name: "index_discounts_on_company_id"
   end
 
   create_table "invoice_products", force: :cascade do |t|
@@ -64,13 +64,13 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
     t.string "customer_nif"
     t.string "customer_name"
     t.bigint "operation_id", null: false
-    t.bigint "store_id", null: false
-    t.bigint "store_user_id", null: false
+    t.bigint "company_id", null: false
+    t.bigint "company_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["operation_id"], name: "index_invoices_on_operation_id"
-    t.index ["store_id"], name: "index_invoices_on_store_id"
-    t.index ["store_user_id"], name: "index_invoices_on_store_user_id"
+    t.index ["company_id"], name: "index_invoices_on_company_id"
+    t.index ["company_user_id"], name: "index_invoices_on_company_user_id"
   end
 
   create_table "product_categories", force: :cascade do |t|
@@ -121,39 +121,39 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
   create_table "operations", force: :cascade do |t|
     t.decimal "total"
     t.decimal "total_tax"
-    t.bigint "store_id", null: false
-    t.bigint "store_user_id", null: false
+    t.bigint "company_id", null: false
+    t.bigint "company_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["store_id"], name: "index_operations_on_store_id"
-    t.index ["store_user_id"], name: "index_operations_on_store_user_id"
+    t.index ["company_id"], name: "index_operations_on_company_id"
+    t.index ["company_user_id"], name: "index_operations_on_company_user_id"
   end
 
-  create_table "store_products", force: :cascade do |t|
+  create_table "company_products", force: :cascade do |t|
     t.string "status"
     t.decimal "stock"
     t.decimal "target_stock"
-    t.bigint "store_id", null: false
+    t.bigint "company_id", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_store_products_on_product_id"
-    t.index ["store_id"], name: "index_store_products_on_store_id"
+    t.index ["product_id"], name: "index_company_products_on_product_id"
+    t.index ["company_id"], name: "index_company_products_on_company_id"
   end
 
-  create_table "store_users", force: :cascade do |t|
+  create_table "company_users", force: :cascade do |t|
     t.string "status"
-    t.boolean "store_admin"
-    t.boolean "store_supervisor"
+    t.boolean "company_admin"
+    t.boolean "company_supervisor"
     t.bigint "user_id", null: false
-    t.bigint "store_id", null: false
+    t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["store_id"], name: "index_store_users_on_store_id"
-    t.index ["user_id"], name: "index_store_users_on_user_id"
+    t.index ["company_id"], name: "index_company_users_on_company_id"
+    t.index ["user_id"], name: "index_company_users_on_user_id"
   end
 
-  create_table "stores", force: :cascade do |t|
+  create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "nif"
     t.string "address"
@@ -183,22 +183,22 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "discounts", "stores"
+  add_foreign_key "discounts", "companies"
   add_foreign_key "invoice_products", "invoices"
   add_foreign_key "invoice_products", "operation_products"
   add_foreign_key "invoices", "operations"
-  add_foreign_key "invoices", "store_users"
-  add_foreign_key "invoices", "stores"
+  add_foreign_key "invoices", "company_users"
+  add_foreign_key "invoices", "companies"
   add_foreign_key "products", "product_categories"
   add_foreign_key "products", "product_statuses"
   add_foreign_key "products", "taxes"
   add_foreign_key "operation_products", "discounts"
   add_foreign_key "operation_products", "products"
   add_foreign_key "operation_products", "operations"
-  add_foreign_key "operations", "store_users"
-  add_foreign_key "operations", "stores"
-  add_foreign_key "store_products", "products"
-  add_foreign_key "store_products", "stores"
-  add_foreign_key "store_users", "stores"
-  add_foreign_key "store_users", "users"
+  add_foreign_key "operations", "company_users"
+  add_foreign_key "operations", "companies"
+  add_foreign_key "company_products", "products"
+  add_foreign_key "company_products", "companies"
+  add_foreign_key "company_users", "companies"
+  add_foreign_key "company_users", "users"
 end

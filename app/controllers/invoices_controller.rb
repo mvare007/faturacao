@@ -47,8 +47,8 @@ class InvoicesController < ApplicationController
       customer_name
       customer_nif
       operation_id
-      store_id
-      store_user_id
+      company_id
+      company_user_id
     ]
   end
 

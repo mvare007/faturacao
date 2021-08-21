@@ -51,6 +51,6 @@ class DiscountsController < ApplicationController
   end
 
   def discount_params
-    params.require(:discount).permit(:name, :description, :percentage, :start_date, :end_date, :store_id)
+    params.require(:discount).permit(:name, :description, :percentage, :start_date, :end_date, :company_id)
   end
 end

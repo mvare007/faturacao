@@ -7,18 +7,18 @@
 #  total_tax     :decimal(, )
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  store_id      :bigint           not null
-#  store_user_id :bigint           not null
+#  company_id      :bigint           not null
+#  company_user_id :bigint           not null
 #
 # Indexes
 #
-#  index_operations_on_store_id       (store_id)
-#  index_operations_on_store_user_id  (store_user_id)
+#  index_operations_on_company_id       (company_id)
+#  index_operations_on_company_user_id  (company_user_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (store_id => stores.id)
-#  fk_rails_...  (store_user_id => store_users.id)
+#  fk_rails_...  (company_id => companies.id)
+#  fk_rails_...  (company_user_id => company_users.id)
 #
 require "test_helper"
 

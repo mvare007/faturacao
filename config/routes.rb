@@ -2,9 +2,9 @@
 Rails.application.routes.draw do
   root to: "dashboard#home"
 
-  resources :store do
-    resources :store_products
-    resources :store_users
+  resources :company do
+    resources :company_products
+    resources :company_users
   end
 
   resources :operations do

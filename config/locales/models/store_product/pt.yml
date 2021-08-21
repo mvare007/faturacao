@@ -1,11 +1,11 @@
 pt:
   activerecord:
     models:
-      store_product:
+      company_product:
         one: Produto da Loja
         other: Produtos da Loja
     attributes:
-      store_product:
+      company_product:
         status: Estado
         stock: Stock Atual
         target_stock: Stock Alvo

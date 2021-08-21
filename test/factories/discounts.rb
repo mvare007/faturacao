@@ -11,16 +11,16 @@
 #  status      :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  store_id    :bigint           not null
+#  company_id    :bigint           not null
 #
 # Indexes
 #
 #  index_discounts_on_name      (name) UNIQUE
-#  index_discounts_on_store_id  (store_id)
+#  index_discounts_on_company_id  (company_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (store_id => stores.id)
+#  fk_rails_...  (company_id => companies.id)
 #
 FactoryBot.define do
   factory :discount do

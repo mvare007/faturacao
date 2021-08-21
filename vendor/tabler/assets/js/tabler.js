@@ -4648,10 +4648,10 @@
 	  delete events[typeEvent][fn.uidEvent];
 	}
 	function removeNamespacedHandlers(element, events, typeEvent, namespace) {
-	  const storeElementEvent = events[typeEvent] || {};
-	  Object.keys(storeElementEvent).forEach(handlerKey => {
+	  const companyElementEvent = events[typeEvent] || {};
+	  Object.keys(companyElementEvent).forEach(handlerKey => {
 	    if (handlerKey.includes(namespace)) {
-	      const event = storeElementEvent[handlerKey];
+	      const event = companyElementEvent[handlerKey];
 	      removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector);
 	    }
 	  });
@@ -4687,11 +4687,11 @@
 	        removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1));
 	      });
 	    }
-	    const storeElementEvent = events[typeEvent] || {};
-	    Object.keys(storeElementEvent).forEach(keyHandlers => {
+	    const companyElementEvent = events[typeEvent] || {};
+	    Object.keys(companyElementEvent).forEach(keyHandlers => {
 	      const handlerKey = keyHandlers.replace(stripUidRegex, '');
 	      if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
-	        const event = storeElementEvent[keyHandlers];
+	        const event = companyElementEvent[keyHandlers];
 	        removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector);
 	      }
 	    });

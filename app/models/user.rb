@@ -13,7 +13,7 @@
 #
 class User < ApplicationRecord
   # Association
-  has_many :store_users, dependent: :destroy
+  has_many :company_users, dependent: :destroy
 
   # Constants
   STATUSES = { active: 'active', inactive: 'inactive' }.freeze

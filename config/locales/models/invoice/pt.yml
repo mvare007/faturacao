@@ -1,0 +1,11 @@
+pt:
+  activerecord:
+    models:
+      invoice:
+        one: Produto da Operação
+        other: Produtos da Operação
+    attributes:
+      invoice:
+        customer_name:
+        customer_nif:
+        healthcare_subsystem:

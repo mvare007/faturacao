@@ -59,8 +59,8 @@ class OperationsController < ApplicationController
   def permitted_params
     %i[
       total
-      store_id
-      store_user_id
+      company_id
+      company_user_id
     ]
   end
 
