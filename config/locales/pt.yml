@@ -220,5 +220,10 @@ pt:
     create?: 'Não tem permissão para criar %{model_name_pluralized}!'
     created: Criado com Sucesso
   # General translations
+  authentication: Autenticação
   updated: Atualizado com Sucesso
   destroyed: Eliminado com Sucesso
+  login: Iniciar Sessão
+  logout: Terminar Sessão
+  signup: Criar Conta
+  welcome: Bem-vind@

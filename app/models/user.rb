@@ -12,6 +12,8 @@
 #  updated_at :datetime         not null
 #
 class User < ApplicationRecord
+  has_secure_password
+
   # Association
   has_many :company_users, dependent: :destroy
 

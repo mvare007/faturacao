@@ -2,19 +2,19 @@
 #
 # Table name: company_users
 #
-#  id               :bigint           not null, primary key
-#  status           :string
+#  id                 :bigint           not null, primary key
 #  company_admin      :boolean
 #  company_supervisor :boolean
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  status             :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #  company_id         :bigint           not null
-#  user_id          :bigint           not null
+#  user_id            :bigint           not null
 #
 # Indexes
 #
 #  index_company_users_on_company_id  (company_id)
-#  index_company_users_on_user_id   (user_id)
+#  index_company_users_on_user_id     (user_id)
 #
 # Foreign Keys
 #

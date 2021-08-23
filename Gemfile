@@ -34,6 +34,7 @@ gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem "audited", "~> 4.9"
 gem "pundit"
+gem "bcrypt"
 
 group :development, :test do
   gem 'pry-byebug'

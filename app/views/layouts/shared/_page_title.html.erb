@@ -1,0 +1,23 @@
+<!-- Page title -->
+<div class="container-xl">
+  <div class="page-header d-print-none">
+    <div class="row align-items-center">
+      <div class="col">
+        <% if local_assigns[:pretitle].present? %>
+          <div class="page-pretitle">
+            <%= pretitle %>
+          </div>
+        <% end %>
+        <h2 class="page-title"><%= title %></h2>
+      </div>
+      <% if local_assigns[:page_title_actions].present? %>
+        <!-- Page title actions -->
+        <div class="col-auto ms-auto d-print-none">
+          <div class="btn-list">
+            <%= page_title_actions %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>>

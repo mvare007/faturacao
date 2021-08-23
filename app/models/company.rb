@@ -3,6 +3,7 @@
 # Table name: companies
 #
 #  id             :bigint           not null, primary key
+#  activity_type  :string
 #  address        :string
 #  license_number :string
 #  location       :string

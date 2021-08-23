@@ -37,6 +37,43 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
     t.index ["user_id", "user_type"], name: "user_index"
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "nif"
+    t.string "address"
+    t.string "zip_code"
+    t.string "location"
+    t.string "license_number"
+    t.string "activity_type"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "company_products", force: :cascade do |t|
+    t.string "status"
+    t.decimal "stock"
+    t.decimal "target_stock"
+    t.bigint "company_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_products_on_company_id"
+    t.index ["product_id"], name: "index_company_products_on_product_id"
+  end
+
+  create_table "company_users", force: :cascade do |t|
+    t.string "status"
+    t.boolean "company_admin"
+    t.boolean "company_supervisor"
+    t.bigint "user_id", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_users_on_company_id"
+    t.index ["user_id"], name: "index_company_users_on_user_id"
+  end
+
   create_table "discounts", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -47,8 +84,8 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
     t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_discounts_on_name", unique: true
     t.index ["company_id"], name: "index_discounts_on_company_id"
+    t.index ["name"], name: "index_discounts_on_name", unique: true
   end
 
   create_table "invoice_products", force: :cascade do |t|
@@ -68,9 +105,32 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
     t.bigint "company_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["operation_id"], name: "index_invoices_on_operation_id"
     t.index ["company_id"], name: "index_invoices_on_company_id"
     t.index ["company_user_id"], name: "index_invoices_on_company_user_id"
+    t.index ["operation_id"], name: "index_invoices_on_operation_id"
+  end
+
+  create_table "operation_products", force: :cascade do |t|
+    t.bigint "operation_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "discount_id"
+    t.decimal "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["discount_id"], name: "index_operation_products_on_discount_id"
+    t.index ["operation_id"], name: "index_operation_products_on_operation_id"
+    t.index ["product_id"], name: "index_operation_products_on_product_id"
+  end
+
+  create_table "operations", force: :cascade do |t|
+    t.decimal "total"
+    t.decimal "total_tax"
+    t.bigint "company_id", null: false
+    t.bigint "company_user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_operations_on_company_id"
+    t.index ["company_user_id"], name: "index_operations_on_company_user_id"
   end
 
   create_table "product_categories", force: :cascade do |t|
@@ -83,7 +143,7 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
 
   create_table "product_statuses", force: :cascade do |t|
     t.string "name"
-    t.string "key"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_product_statuses_on_name", unique: true
@@ -106,65 +166,6 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
     t.index ["tax_id"], name: "index_products_on_tax_id"
   end
 
-  create_table "operation_products", force: :cascade do |t|
-    t.bigint "operation_id", null: false
-    t.bigint "product_id", null: false
-    t.bigint "discount_id"
-    t.decimal "quantity"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["discount_id"], name: "index_operation_products_on_discount_id"
-    t.index ["product_id"], name: "index_operation_products_on_product_id"
-    t.index ["operation_id"], name: "index_operation_products_on_operation_id"
-  end
-
-  create_table "operations", force: :cascade do |t|
-    t.decimal "total"
-    t.decimal "total_tax"
-    t.bigint "company_id", null: false
-    t.bigint "company_user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_operations_on_company_id"
-    t.index ["company_user_id"], name: "index_operations_on_company_user_id"
-  end
-
-  create_table "company_products", force: :cascade do |t|
-    t.string "status"
-    t.decimal "stock"
-    t.decimal "target_stock"
-    t.bigint "company_id", null: false
-    t.bigint "product_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_company_products_on_product_id"
-    t.index ["company_id"], name: "index_company_products_on_company_id"
-  end
-
-  create_table "company_users", force: :cascade do |t|
-    t.string "status"
-    t.boolean "company_admin"
-    t.boolean "company_supervisor"
-    t.bigint "user_id", null: false
-    t.bigint "company_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_company_users_on_company_id"
-    t.index ["user_id"], name: "index_company_users_on_user_id"
-  end
-
-  create_table "companies", force: :cascade do |t|
-    t.string "name"
-    t.string "nif"
-    t.string "address"
-    t.string "zip_code"
-    t.string "location"
-    t.string "license_number"
-    t.string "status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "taxes", force: :cascade do |t|
     t.string "name"
     t.decimal "percentage"
@@ -183,22 +184,22 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "company_products", "companies"
+  add_foreign_key "company_products", "products"
+  add_foreign_key "company_users", "companies"
+  add_foreign_key "company_users", "users"
   add_foreign_key "discounts", "companies"
   add_foreign_key "invoice_products", "invoices"
   add_foreign_key "invoice_products", "operation_products"
-  add_foreign_key "invoices", "operations"
-  add_foreign_key "invoices", "company_users"
   add_foreign_key "invoices", "companies"
+  add_foreign_key "invoices", "company_users"
+  add_foreign_key "invoices", "operations"
+  add_foreign_key "operation_products", "discounts"
+  add_foreign_key "operation_products", "operations"
+  add_foreign_key "operation_products", "products"
+  add_foreign_key "operations", "companies"
+  add_foreign_key "operations", "company_users"
   add_foreign_key "products", "product_categories"
   add_foreign_key "products", "product_statuses"
   add_foreign_key "products", "taxes"
-  add_foreign_key "operation_products", "discounts"
-  add_foreign_key "operation_products", "products"
-  add_foreign_key "operation_products", "operations"
-  add_foreign_key "operations", "company_users"
-  add_foreign_key "operations", "companies"
-  add_foreign_key "company_products", "products"
-  add_foreign_key "company_products", "companies"
-  add_foreign_key "company_users", "companies"
-  add_foreign_key "company_users", "users"
 end

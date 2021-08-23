@@ -13,8 +13,10 @@
   <body class="antialiased">
     <div class="wrapper">
       <%= render 'layouts/shared/navbar/navbar' %>
-
-      <%= yield %>
+      <div class="page-wrapper">
+        <%= yield %>
+        <%= render 'layouts/shared/footer' %>
+      </div>
     </div>
   </body>
 </html>

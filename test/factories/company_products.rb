@@ -8,18 +8,18 @@
 #  target_stock :decimal(, )
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  company_id   :bigint           not null
 #  product_id   :bigint           not null
-#  company_id     :bigint           not null
 #
 # Indexes
 #
+#  index_company_products_on_company_id  (company_id)
 #  index_company_products_on_product_id  (product_id)
-#  index_company_products_on_company_id    (company_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (product_id => products.id)
 #  fk_rails_...  (company_id => companies.id)
+#  fk_rails_...  (product_id => products.id)
 #
 FactoryBot.define do
   factory :company_product do

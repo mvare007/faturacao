@@ -2,6 +2,14 @@
 Rails.application.routes.draw do
   root to: "dashboard#home"
 
+  # Sessions Routes
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/login'
+  get 'sessions/logout'
+  get 'sessions/welcome'
+  get 'authorized', to: 'sessions#page_requires_login'
+
   resources :company do
     resources :company_products
     resources :company_users
