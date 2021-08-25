@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorized, only: %i[new create login welcome]
+  skip_before_action :authorized, only: %i[new create welcome]
 
   def new
   end
@@ -7,24 +7,20 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: params[:username])
     if @user&.authenticate(params[:password])
-      sessions[:user_id] = @user.id
-      redirect_to sessions_new_path
+      session[:user_id] = @user.id
+      redirect_to root_path
     else
-      redirect_to sessions_login_path
+      flash.now[:alert] = t(:login_invalid)
+      render :new
     end
   end
 
-  def login
-  end
-
-  def logout
-    sessions[:user_id] = nil
+  def destroy
+    session[:user_id] = nil
+    redirect_to sessions_welcome_path
   end
 
   def welcome
-  end
-
-  def page_requires_login
   end
 end
 

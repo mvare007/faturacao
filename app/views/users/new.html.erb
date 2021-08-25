@@ -1,2 +1,53 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="page-body">
+  <div class="container-xl">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><%= t(:create) %> <%= User.model_name.human %></h3>
+      </div>
+      <div class="card-body">
+        <%= form_with model: @user, method: :post, local: true do |f| %>
+          <div class="form-group mb-3 ">
+            <label class="form-label"><%= User.human_attribute_name(:first_name) %></label>
+            <div>
+              <%= f.text_field :first_name, class: 'form-control', placeholder: User.human_attribute_name(:first_name) %>
+              <small class="form-hint">We'll never share your email with anyone else.</small>
+            </div>
+          </div>
+          <div class="form-group mb-3 ">
+            <label class="form-label"><%= User.human_attribute_name(:last_name) %></label>
+            <div>
+              <%= f.text_field :last_name, class: 'form-control', placeholder: User.human_attribute_name(:last_name) %>
+              <small class="form-hint">We'll never share your email with anyone else.</small>
+            </div>
+          </div>
+          <div class="form-group mb-3 ">
+            <label class="form-label"><%= User.human_attribute_name(:username) %></label>
+            <div>
+              <%= f.text_field :username, class: 'form-control', placeholder: User.human_attribute_name(:username) %>
+              <small class="form-hint">We'll never share your email with anyone else.</small>
+            </div>
+          </div>
+          <div class="form-group mb-3 ">
+            <label class="form-label"><%= User.human_attribute_name(:password) %></label>
+            <div>
+              <%= f.password_field :password, class: 'form-control', placeholder: true %>
+              <small class="form-hint">
+                Your password must be 8-20 characters long, contain letters and numbers, and must not contain
+                spaces, special characters, or emoji.
+              </small>
+            </div>
+          </div>
+          <div class="form-group mb-3 ">
+            <label class="form-label"><%= User.human_attribute_name(:password_confirmation) %></label>
+            <div>
+              <%= f.password_field :password_confirmation, class: 'form-control', placeholder: true %>
+            </div>
+          </div>
+          <div class="form-footer">
+            <%= f.submit t(:submit), class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

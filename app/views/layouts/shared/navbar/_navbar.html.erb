@@ -4,9 +4,11 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <h1 class="navbar-brand navbar-brand-autodark">
-      <span class="navbar-brand-image">
-        <i class="fas fa-cash-register mr-2"></i>Gestão de Faturação <small class="text-muted">beta</small>
-      </span>
+      <%= link_to root_path, class: 'nav-link' do %>
+        <span class="navbar-brand-image">
+          <i class="fas fa-cash-register mr-2"></i>Gestão de Faturação <small class="text-muted">beta</small>
+        </span>
+      <% end %>
     </h1>
     <div class="collapse navbar-collapse" id="navbar-menu">
       <%= render 'layouts/shared/navbar/navlinks' %>

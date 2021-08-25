@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    authorize @user
+    authorize User
     @user = User.new(user_params)
     session[:user_id] = @user.id
     if @user.save
@@ -54,6 +54,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :admin, :username, :password)
+    params.require(:user).permit(:first_name, :last_name, :admin, :username, :password, :password_confirmation)
   end
 end

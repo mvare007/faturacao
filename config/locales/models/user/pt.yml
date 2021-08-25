@@ -6,10 +6,11 @@ pt:
         other: Utilizadores
     attributes:
       user:
-        admin: Administrador?
+        admin: Administrador
         email: E-mail
         first_name: Nome
         last_name: Apelido
         status: Estado
         username: Nome de Utilizador
         password: Palavra-Passe
+        password_confirmation: Confirmação de Palavra-Passe

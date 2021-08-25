@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authorized
-    redirect_to sessions_welcome_path unless logged_in?
+    redirect_to login_path, alert: t(:please_login) unless logged_in?
   end
 
   def user_not_authorized
