@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   get 'sessions/welcome'
   get "/login", to: "sessions#new"
   post 'sessions/create'
-  get "/logout", to: "sessions#destroy"
+  delete "/logout", to: "sessions#destroy"
 
-  resources :company do
+  resources :companies do
     resources :company_products
     resources :company_users
   end

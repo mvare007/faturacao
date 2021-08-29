@@ -1,7 +1,7 @@
 module SessionsHelper
   def session_buttons
-    if current_user&.logged_in?
-      link_to(t(:logout), sessions_destroy_path, method: :delete)
+    if logged_in?
+      link_to(t(:logout), logout_path, method: :delete, class: 'btn btn-danger d-none d-sm-inline-block')
     else
       [].tap do |buttons|
         buttons << tag.span(class: 'd-none d-sm-inline') { link_to(t(:login), login_path, class: 'btn btn-white') }

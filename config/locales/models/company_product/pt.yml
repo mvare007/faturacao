@@ -2,8 +2,8 @@ pt:
   activerecord:
     models:
       company_product:
-        one: Produto da Loja
-        other: Produtos da Loja
+        one: Produto da Empresa
+        other: Produtos da Empresa
     attributes:
       company_product:
         status: Estado

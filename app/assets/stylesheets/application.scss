@@ -11,3 +11,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+.dropdown-toggle::after {
+  vertical-align: 0;
+  margin: 0;
+  content: "\002B";
+  border: none;
+}

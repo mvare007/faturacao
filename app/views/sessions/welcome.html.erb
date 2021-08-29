@@ -1,11 +1,15 @@
-<%= render 'layouts/shared/page_title', title: t(:welcome), pretitle: t(:authentication) , page_title_actions: sanitize(session_buttons) %>
+<%= render 'layouts/shared/page_title', title: t(:welcome), pretitle: t(:authentication) , page_title_actions: session_buttons.html_safe %>
 
 <div class="page-body">
   <div class="container-xl">
     <% if logged_in? %>
-      <h3>Sessão iniciada como: <%= current_user.username %></h3>
+      <div class="alert alert-success" role="alert">
+        Sessão iniciada como: <%= current_user.username %>
+      </div>
     <% else %>
-      <h3>Por favor inicie sessão para prosseguir</h3>
+      <div class="alert alert-danger" role="alert">
+        Por favor <a href="<%= login_path %>" class="alert-link">inicie sessão</a> para prosseguir
+      </div>
     <% end %>
   </div>
 </div>

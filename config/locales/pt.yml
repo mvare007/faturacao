@@ -227,3 +227,19 @@ pt:
   logout: Terminar Sessão
   signup: Criar Conta
   welcome: Bem-vind@
+  view: Visualizar
+  update: Atualizar
+  edit: Editar
+  create: Criar
+  delete: Eliminar
+  name: Nome
+  new_male: Novo
+  new_female: Nova
+  active_male: Activo
+  active_female: Activa
+  inactive_male: Inactivo
+  inactive_female: Inactiva
+  search: Pesquisa
+  entries: registos
+  next: Próximo
+  prev: Anterior

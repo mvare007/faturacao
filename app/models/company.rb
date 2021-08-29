@@ -27,7 +27,7 @@ class Company < ApplicationRecord
   # Constants
   STATUSES = { active: 'active', inactive: 'inactive' }.freeze
   # TODO: Add activity types
-  # ACTIVITY_TYPES {}.freeze
+  # ACTIVITY_TYPES = {}.freeze
 
   # Delegates
 
@@ -36,10 +36,13 @@ class Company < ApplicationRecord
   accepts_nested_attributes_for :company_products, allow_destroy: true
 
   # Callbacks
+  after_initialize :init, if: :new_record?
+
 
   # Validations
-  # TODO: activity_type validation
   validates :address, :zip_code, :location, :name, :nif, presence: true, length: { maximum: 120 }
+  validates :status, presence: true, inclusion: { in: STATUSES.values }
+  # validates :activity_type, presence: true, inclusion: { in: ACTIVITY_TYPES.values }
 
   # Instance Methods
   def to_s
@@ -48,5 +51,12 @@ class Company < ApplicationRecord
 
   def full_address
     "#{address} #{zip_code} #{location}"
+  end
+
+  private
+
+  # Callbacks
+  def init
+    self.status = STATUSES.fetch(:active)
   end
 end

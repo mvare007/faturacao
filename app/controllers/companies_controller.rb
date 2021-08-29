@@ -11,13 +11,13 @@ class CompaniesController < ApplicationController
   end
 
   def new
-    authorize @company
+    authorize Company
     @company = Company.new
     @company.company_products.build
   end
 
   def create
-    authorize @company
+    authorize Company
     @company = Company.new(company_params)
     if @company.save
       redirect_to @company, notice: t(:created)

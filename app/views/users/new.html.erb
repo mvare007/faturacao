@@ -6,29 +6,29 @@
       </div>
       <div class="card-body">
         <%= form_with model: @user, method: :post, local: true do |f| %>
-          <div class="form-group mb-3 ">
-            <label class="form-label"><%= User.human_attribute_name(:first_name) %></label>
+          <div class="form-group mb-3">
+            <label class="form-label required"><%= User.human_attribute_name(:first_name) %></label>
             <div>
               <%= f.text_field :first_name, class: 'form-control', placeholder: User.human_attribute_name(:first_name) %>
               <small class="form-hint">We'll never share your email with anyone else.</small>
             </div>
           </div>
-          <div class="form-group mb-3 ">
-            <label class="form-label"><%= User.human_attribute_name(:last_name) %></label>
+          <div class="form-group mb-3">
+            <label class="form-label required"><%= User.human_attribute_name(:last_name) %></label>
             <div>
               <%= f.text_field :last_name, class: 'form-control', placeholder: User.human_attribute_name(:last_name) %>
               <small class="form-hint">We'll never share your email with anyone else.</small>
             </div>
           </div>
-          <div class="form-group mb-3 ">
-            <label class="form-label"><%= User.human_attribute_name(:username) %></label>
+          <div class="form-group mb-3">
+            <label class="form-label required"><%= User.human_attribute_name(:username) %></label>
             <div>
               <%= f.text_field :username, class: 'form-control', placeholder: User.human_attribute_name(:username) %>
               <small class="form-hint">We'll never share your email with anyone else.</small>
             </div>
           </div>
-          <div class="form-group mb-3 ">
-            <label class="form-label"><%= User.human_attribute_name(:password) %></label>
+          <div class="form-group mb-3">
+            <label class="form-label required"><%= User.human_attribute_name(:password) %></label>
             <div>
               <%= f.password_field :password, class: 'form-control', placeholder: true %>
               <small class="form-hint">
@@ -37,8 +37,8 @@
               </small>
             </div>
           </div>
-          <div class="form-group mb-3 ">
-            <label class="form-label"><%= User.human_attribute_name(:password_confirmation) %></label>
+          <div class="form-group mb-3">
+            <label class="form-label required"><%= User.human_attribute_name(:password_confirmation) %></label>
             <div>
               <%= f.password_field :password_confirmation, class: 'form-control', placeholder: true %>
             </div>

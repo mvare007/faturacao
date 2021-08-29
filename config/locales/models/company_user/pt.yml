@@ -1,0 +1,11 @@
+pt:
+  activerecord:
+    models:
+      company_user:
+        one: Colaborador
+        other: Colaboradores
+    attributes:
+      company_user:
+        status: Estado
+        company_admin: Responsável
+        company_supervisor: Supervisor
