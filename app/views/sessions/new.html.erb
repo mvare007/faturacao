@@ -7,24 +7,20 @@
       <div class="card-body">
         <%= form_with url: sessions_create_path, method: :post, local: true do |f| %>
           <div class="form-group mb-3">
-            <label class="form-label"><%= User.human_attribute_name(:username) %></label>
-            <div>
-              <%= f.text_field :username, class: 'form-control', placeholder: User.human_attribute_name(:username) %>
-              <small class="form-hint">We'll never share your email with anyone else.</small>
+            <div class="form-floating">
+              <%= f.text_field :username, class: 'form-control', id: 'username-floating-input', placeholder: User.human_attribute_name(:username), autocomplete: false %>
+              <label for="username-floating-input"><%= User.human_attribute_name(:username) %></label>
             </div>
           </div>
           <div class="form-group mb-3">
-            <label class="form-label"><%= User.human_attribute_name(:password) %></label>
-            <div>
+            <div class="form-floating">
               <%= f.password_field :password, class: 'form-control', placeholder: true %>
-              <small class="form-hint">
-                Your password must be 8-20 characters long, contain letters and numbers, and must not contain
-                spaces, special characters, or emoji.
-              </small>
+              <label for="username-floating-input"><%= User.human_attribute_name(:password) %></label>
             </div>
           </div>
           <div class="form-footer">
             <%= f.submit t(:login), class: 'btn btn-primary' %>
+            <%= link_to 'Criar Conta' new_user_path %>
           </div>
         <% end %>
       </div>

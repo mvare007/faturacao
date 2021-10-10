@@ -1,0 +1,20 @@
+<div class="col-md-6 col-xl-3">
+  <div class="card">
+    <div class="card-body text-center">
+      <div class="mb-3">
+        <span class="avatar avatar-xl avatar-rounded"><%= initials(company.name) %></span>
+      </div>
+      <div class="card-title mb-1"><%= company.name %></div>
+      <div class="text-muted"><%= company.location %></div>
+      <% if current_user.admin? %>
+        <div class="text-muted mt-1"><%= t(:status) %>: <%= t(company.status) %></div>
+      <% end %>
+    </div>
+    <%= link_to company_path(company), class: 'card-btn' do %>
+      <i class="far fa-eye mr-1"></i> <%= t(:view) %>
+    <% end %>
+    <%= link_to  edit_company_path(company), class: 'card-btn' do %>
+      <i class="far fa-edit text-success mr-1"></i> <%= t(:edit) %>
+    <% end %>
+  </div>
+</div>

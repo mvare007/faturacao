@@ -37,7 +37,12 @@ class Company < ApplicationRecord
 
   # Callbacks
   after_initialize :init, if: :new_record?
+  after_create :create_store_admin
 
+  # Scopes
+  scope :actives, -> { where(status: STATUSES.fetch(:active)) }
+  scope :for_admin, -> { includes(:company_users).where(company_users: { role: CompanyUser::ROLES.fetch(:admin) }) }
+  scope :acessible_by, ->(user) { where(id: user.company_users.pluck(:company_id)) }
 
   # Validations
   validates :address, :zip_code, :location, :name, :nif, presence: true, length: { maximum: 120 }
@@ -58,5 +63,9 @@ class Company < ApplicationRecord
   # Callbacks
   def init
     self.status = STATUSES.fetch(:active)
+  end
+
+  def create_store_admin
+    CompanyUser.create(company: self, user: Current.user, role: CompanyUser::ROLES.fetch(:admin))
   end
 end

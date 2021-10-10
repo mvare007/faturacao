@@ -6,6 +6,13 @@ pt:
         other: Colaboradores
     attributes:
       company_user:
-        status: Estado
         company_admin: Responsável
         company_supervisor: Supervisor
+        role: Função
+        roles:
+          admin: Administrador
+          supervisor: Supervisor
+        status: Estado
+        statuses:
+          active: Activo
+          inactive: Inactivo

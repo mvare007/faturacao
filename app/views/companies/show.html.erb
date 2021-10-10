@@ -1,0 +1,50 @@
+<%= render 'layouts/shared/page_title', title: @company.name, pretitle: Company.model_name.human(count: 2),
+                                        page_title_actions: link_to(t(:edit), edit_company_path(@company), class: 'btn btn-outline-success') %>
+
+<div class="page-body">
+
+  <div class="container-xl">
+    <div class="card">
+      <div class="card-body">
+        <div class="my-2 mx-auto text-center">
+          <span class="avatar avatar-xl avatar-rounded border"><%= initials(@company.name) %></span>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="form-label"><%= t(:name) %></label>
+          <input type="text" class="form-control form-control-lg bg-secondary text-white bg-gradient" value="<%= @company.name %>" placeholder="<%= @company.name %>" disabled>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="form-label"><%= Company.human_attribute_name(:address) %></label>
+          <input type="text" class="form-control form-control-lg bg-secondary text-white bg-gradient" value="<%= @company.address %>" placeholder="<%= @company.address %>" disabled>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="form-label"><%= Company.human_attribute_name(:zip_code) %></label>
+          <input type="text" class="form-control form-control-lg bg-secondary text-white bg-gradient" value="<%= @company.zip_code %>" placeholder="<%= @company.zip_code %>" disabled>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="form-label"><%= Company.human_attribute_name(:location) %></label>
+          <input type="text" class="form-control form-control-lg bg-secondary text-white bg-gradient" value="<%= @company.location %>" placeholder="<%= @company.location %>" disabled>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="form-label"><%= Company.human_attribute_name(:nif) %></label>
+          <input type="text" class="form-control form-control-lg bg-secondary text-white bg-gradient" value="<%= @company.nif %>" placeholder="<%= @company.nif %>" disabled>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="form-label"><%= Company.human_attribute_name(:license_number) %></label>
+          <input type="text" class="form-control form-control-lg bg-secondary text-white bg-gradient" value="<%= @company.license_number %>" placeholder="<%= @company.license_number %>" disabled>
+        </div>
+        <hr>
+        <div class="form-group mt-3">
+          <label class="form-label"><%= CompanyUser.model_name.human(count: 2) %></label>
+          <%= render 'companies/partials/company_users_show_table', company_users: @company_users %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

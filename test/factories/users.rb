@@ -15,7 +15,8 @@
 FactoryBot.define do
   factory :user do
     admin { false }
-    first_name { "MyString" }
-    last_name { "MyString" }
+    first_name { Faker::Name.name }
+    last_name { Faker::Name.name }
+    password { 'password' }
   end
 end

@@ -21,6 +21,7 @@ FactoryBot.define do
     address { "MyString" }
     zip_code { "MyString" }
     location { "MyString" }
+    status { Company::STATUSES.values.sample }
     license_number { "MyString" }
   end
 end

@@ -1,0 +1,22 @@
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col"><%= t(:id) %></th>
+      <th scope="col"><%= t(:name) %></th>
+      <th scope="col"><%= CompanyUser.human_attribute_name(:role) %></th>
+      <th scope="col"><%= t(:status) %></th>
+      <th scope="col"><%= t(:created_at) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% company_users.each do |company_user| %>
+      <tr>
+        <td><%= company_user.id %></td>
+        <td><%= company_user.full_name %></td>
+        <td><%= company_user.role_name %></td>
+        <td><%= company_user.status_name %></td>
+        <td><%= company_user.created_at.strftime('%d/%m/%Y %H:%M') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

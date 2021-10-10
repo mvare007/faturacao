@@ -2,14 +2,13 @@
 #
 # Table name: company_users
 #
-#  id                 :bigint           not null, primary key
-#  company_admin      :boolean
-#  company_supervisor :boolean
-#  status             :string
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  company_id         :bigint           not null
-#  user_id            :bigint           not null
+#  id         :bigint           not null, primary key
+#  role       :string
+#  status     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  company_id :bigint           not null
+#  user_id    :bigint           not null
 #
 # Indexes
 #
@@ -29,13 +28,12 @@ class CompanyUser < ApplicationRecord
   belongs_to :company
 
   # Delegates
-  with_options prefix: true, allow_nil: true do
-    delegate :full_name, :admin, :status, to: :user
-    delegate :name, to: :company
-  end
+  delegate :name, to: :company, prefix: true, allow_nil: true
+  delegate :full_name, :admin, :status, to: :user, allow_nil: true
 
   # Constants
   STATUSES = { active: 'active', inactive: 'inactive' }.freeze
+  ROLES = { admin: 'admin', supervisor: 'supervisor' }.freeze
 
   # Scopes
   scope :for_company, ->(company) { where(company: company) }
@@ -45,19 +43,20 @@ class CompanyUser < ApplicationRecord
 
   # Validations
   validates :status, presence: true, inclusion: { in: STATUSES.values }
+  validates :role, inclusion: { in: ROLES.values }, allow_blank: true
 
   # Instance Methods
   def to_s
     "#{user_full_name} - #{company_name}"
   end
 
-  # def inactive!
-  #   self.status = STATUSES.fetch(:inactive)
-  # end
+  def role_name
+    I18n.t("activerecord.attributes.company_user.roles.#{role}")
+  end
 
-  # def active!
-  #   self.status = STATUSES.fetch(:active)
-  # end
+  def status_name
+    I18n.t("activerecord.attributes.company_user.statuses.#{status}")
+  end
 
   private
 

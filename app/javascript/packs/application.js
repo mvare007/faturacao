@@ -16,12 +16,6 @@ require("datatables.net-dt");
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-
-// ----------------------------------------------------
-// Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
-// WRITE YOUR OWN JS STARTING FROM HERE 👇
-// ----------------------------------------------------
-
 // External imports
 import "bootstrap";
 import "../../../vendor/tabler/assets/css/tabler.css";
@@ -31,41 +25,8 @@ import $ from "jquery";
 global.$ = jQuery;
 
 // Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import "controllers"
 
 document.addEventListener('turbolinks:load', () => {
- $("#cu-table").dataTable({
-    language: {
-      sEmptyTable: "Nenhum registo encontrado",
-      sInfo: "A visualizar de _START_ até _END_ de _TOTAL_ registos",
-      sInfoEmpty: "A visualizar 0 até 0 de 0 registos",
-      sInfoFiltered: "(Filtrados de _MAX_ registros)",
-      sInfoPostFix: "",
-      sInfoThousands: ".",
-      sLengthMenu: "A visualizar _MENU_ resultados por página",
-      sLoadingRecords: "A Carregar...",
-      sProcessing: "A Processar...",
-      sZeroRecords: "Nenhum registo encontrado",
-      sSearch: "Pesquisar",
-      oPaginate: {
-        sNext: "Próximo",
-        sPrevious: "Anterior",
-        sFirst: "Primeiro",
-        sLast: "Último",
-      },
-      oAria: {
-        sSortAscending: ": Ordenar colunas de forma ascendente",
-        sSortDescending: ": Ordenar colunas de forma descendente",
-      },
-      select: {
-        rows: {
-          _: "Linhas %d seleccionadas",
-          0: "Nenhuma linha selecionada",
-          1: "1 linha seleccionada ",
-        },
-      },
-    },
-  });
 });
 
-import "controllers"

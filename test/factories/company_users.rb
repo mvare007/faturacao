@@ -2,14 +2,13 @@
 #
 # Table name: company_users
 #
-#  id                 :bigint           not null, primary key
-#  company_admin      :boolean
-#  company_supervisor :boolean
-#  status             :string
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  company_id         :bigint           not null
-#  user_id            :bigint           not null
+#  id         :bigint           not null, primary key
+#  role       :string
+#  status     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  company_id :bigint           not null
+#  user_id    :bigint           not null
 #
 # Indexes
 #

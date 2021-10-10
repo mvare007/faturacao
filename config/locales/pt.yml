@@ -143,7 +143,7 @@ pt:
     submit:
       create: Criar %{model}
       submit: Gravar %{model}
-      update: Actualizar %{model}
+      update: Atualizar %{model}
   number:
     currency:
       format:
@@ -235,11 +235,14 @@ pt:
   name: Nome
   new_male: Novo
   new_female: Nova
-  active_male: Activo
-  active_female: Activa
-  inactive_male: Inactivo
-  inactive_female: Inactiva
+  active: Activo
+  inactive: Inactivo
   search: Pesquisa
   entries: registos
   next: Próximo
   prev: Anterior
+  go_back: Voltar
+  status: Estado
+  submit: Submeter
+  created_at: Criado a
+  updated_at: Atualizado a

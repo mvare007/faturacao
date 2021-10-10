@@ -35,6 +35,7 @@ gem 'font-awesome-sass'
 gem "audited", "~> 4.9"
 gem "pundit"
 gem "bcrypt"
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 
 group :development, :test do
   gem 'pry-byebug'

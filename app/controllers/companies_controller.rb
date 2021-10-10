@@ -3,11 +3,12 @@ class CompaniesController < ApplicationController
 
   def index
     authorize Company
-    @companies = Company.all
+    @companies = Company.acessible_by(Current.user)
   end
 
   def show
     authorize @company
+    @company_users = @company.company_users.includes(:user).order(:created_at)
   end
 
   def new

@@ -1,1 +1,9 @@
-<%= render 'datatables/table', title: 'sdsd', resource: 'dasd' %>
+<div class="page-body">
+  <div class="container-xl">
+    <div class="row row-cards">
+    <% @companies.each do |company| %>
+      <%= render 'companies/partials/card', company: company %>
+    <% end %>
+    </div>
+  </div>
+</div>

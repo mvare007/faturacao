@@ -64,8 +64,7 @@ ActiveRecord::Schema.define(version: 2021_08_10_145634) do
 
   create_table "company_users", force: :cascade do |t|
     t.string "status"
-    t.boolean "company_admin"
-    t.boolean "company_supervisor"
+    t.string "role"
     t.bigint "user_id", null: false
     t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false

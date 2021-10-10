@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def current_user
-    User.find_by(id: session[:user_id])
+    Current.user ||= User.find_by(id: session[:user_id])
   end
 
   def logged_in?
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authorized
-    redirect_to login_path, alert: t(:please_login) unless logged_in?
+    redirect_to sessions_welcome_path, alert: t(:please_login) unless logged_in?
   end
 
   def user_not_authorized

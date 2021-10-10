@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create]
+  skip_before_action :authorized, only: %i[new create]
   before_action :set_user, only: %i[show edit update destroy]
 
   def index
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     session[:user_id] = @user.id
     if @user.save
-      redirect_to root_path, notice: t(:created)
+      redirect_to login_path, notice: t(:created)
     else
       flash.now[:alert] = t(:error)
       render :new
